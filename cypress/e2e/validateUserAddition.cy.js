@@ -5,8 +5,8 @@ describe("Validate user addition", () => {
     cy.fixture('data-admin.json').then((data) => {
       const { username, password } = data
 
-      cy.loginHRM(username, password); // Thực hiện đăng nhập
-      cy.url().should("include", "/dashboard/index") // Kiểm tra đã đăng nhập thành công
+      cy.loginHRM(username, password); 
+      cy.url().should("include", "/dashboard/index") 
 
       // Lưu trạng thái đăng nhập vào Local Storage
       localStorage.setItem('loggedIn', 'true')
@@ -21,8 +21,8 @@ describe("Validate user addition", () => {
       // Nếu chưa đăng nhập, thực hiện đăng nhập lại
       cy.fixture('data-admin.json').then((data) => {
         const { username, password } = data
-        cy.loginHRM(username, password); // Thực hiện đăng nhập lại
-        cy.url().should("include", "/dashboard") // Kiểm tra đã đăng nhập thành công
+        cy.loginHRM(username, password); 
+        cy.url().should("include", "/dashboard") 
 
         // Lưu lại trạng thái đăng nhập vào Local Storage
         localStorage.setItem('loggedIn', 'true')
