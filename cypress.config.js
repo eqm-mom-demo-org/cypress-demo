@@ -6,7 +6,7 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     baseUrl: "https://opensource-demo.orangehrmlive.com/web/index.php",
-   defaultCommandTimeout:6000
+    //defaultCommandTimeout: 6000
   },
   // viewportWidth: 1920,
   // viewportHeight: 1280,

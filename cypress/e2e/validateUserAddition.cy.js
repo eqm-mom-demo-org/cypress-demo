@@ -1,25 +1,38 @@
-describe("Validation Add User", () => {
+describe("Validate user addition", () => {
+
   before(function () {
-    cy.fixture('data-admin.json').as('dataAdmin')
-  });
+    // Đăng nhập chỉ một lần và lưu trạng thái đăng nhập vào Local Storage
+    cy.fixture('data-admin.json').then((data) => {
+      const { username, password } = data
 
-  beforeEach(function () {
+      cy.loginHRM(username, password); // Thực hiện đăng nhập
+      cy.url().should("include", "/dashboard/index") // Kiểm tra đã đăng nhập thành công
 
-    const { username, password } = this.dataAdmin
-    cy.loginHRM(username, password)
-    cy.location("href").should("includes", "/dashboard/index")
-
+      // Lưu trạng thái đăng nhập vào Local Storage
+      localStorage.setItem('loggedIn', 'true')
+    })
   })
 
-  it('Check Validation', () => {
-    cy.get("li:nth-of-type(1) > a").click();
-    cy.location("href").should("includes", "/admin/viewSystemUsers")
-    cy.get("div.orangehrm-header-container > button").click()
-    cy.location("href").should("includes", "/admin/saveSystemUser")
+  beforeEach(() => {
+    // Kiểm tra trạng thái đăng nhập từ Local Storage trước khi mỗi test case bắt đầu
+    const isLoggedIn = localStorage.getItem('loggedIn')
+
+    if (!isLoggedIn) {
+      // Nếu chưa đăng nhập, thực hiện đăng nhập lại
+      cy.fixture('data-admin.json').then((data) => {
+        const { username, password } = data
+        cy.loginHRM(username, password); // Thực hiện đăng nhập lại
+        cy.url().should("include", "/dashboard") // Kiểm tra đã đăng nhập thành công
+
+        // Lưu lại trạng thái đăng nhập vào Local Storage
+        localStorage.setItem('loggedIn', 'true')
+      })
+    }
+  })
+
+  it('Test case 1: Verify the validation for all fields have been left empty', () => {
+    cy.visit("/admin/saveSystemUser")
     cy.get("form > div:nth-of-type(1) > div > div:nth-of-type(1) i").click()
-
-
-    //Validation null
     cy.get("button[type='submit']").click()
     cy.get("form > div:nth-of-type(1) > div > div:nth-of-type(1) span").should('contain', 'Required')
     cy.get("form > div:nth-of-type(1) > div > div:nth-of-type(2) span").should('contain', 'Required')
@@ -27,28 +40,30 @@ describe("Validation Add User", () => {
     cy.get("div:nth-of-type(4) span").should('contain', 'Required')
     cy.get("div.user-password-cell span").should('contain', 'Required')
     cy.get("div.user-password-row > div > div:nth-of-type(2) span").should('contain', 'Passwords do not match')
-   
 
-    //Input
-    cy.get("form > div:nth-of-type(1) > div > div:nth-of-type(1) i").click() //User role
-    cy.get('[role="listbox"]').contains("Admin").click()
-    cy.get("div:nth-of-type(3) i").click() //Status
-    cy.get('[role="listbox"]').contains("Enabled").click()
+  })
 
-    //Not found Employee name
+  it('Test case 2: Verify the validation for Employee Name Not Found', () => {
+    cy.visit("/admin/saveSystemUser")
     cy.get("input[placeholder='Type for hints...']").type("adminnn")
     cy.get('[role="listbox"]').should('contain', 'No Records Found')
     cy.get('body').click()
     cy.get("form > div:nth-of-type(1) > div > div:nth-of-type(2) span").should('contain', 'Invalid')
+  })
 
-    //Validation User name
+
+  it('Verify the validation for Username', () => {
+    cy.visit("/admin/saveSystemUser")
     cy.get("div:nth-of-type(4) input").type("demo")
     cy.get("div:nth-of-type(4) span").should('contain', 'Should be at least 5 characters') // < 5 chars
     cy.get("div:nth-of-type(4) input").clear()
     cy.get("div:nth-of-type(4) input").type("admin")
     cy.get("div:nth-of-type(4) span").should('contain', 'Already exists') //user is existed
+  })
 
-    //Validation Password
+
+  it('Verify the validation for Password', () => {
+    cy.visit("/admin/saveSystemUser")
     cy.get("div.user-password-cell input").type("admin")     // < 7 chars
     cy.get("div.user-password-cell span").should('contain', 'Should have at least 7 characters')
     cy.get('.oxd-chip').should('contain', 'Very Weak')
@@ -69,12 +84,13 @@ describe("Validation Add User", () => {
     cy.get("div.user-password-cell input").clear()
     cy.get("div.user-password-cell input").type("Admin@123") //lowercase, uppercase, number, symbol
     cy.get('.oxd-chip').should('contain', 'Better')
-
-    //Confirm Password
-    cy.get("div.user-password-row > div > div:nth-of-type(2) input").type("Admin@1", {
-      log: false,
-    })
-    cy.get("div.user-password-row > div > div:nth-of-type(2) span").should('contain', 'Passwords do not match')
-
   })
+
+
+  it('Verify the validation for Confirm Password', () => {
+    cy.visit("/admin/saveSystemUser")
+    cy.get("div.user-password-row > div > div:nth-of-type(2) input").type("Admin@1")
+    cy.get("div.user-password-row > div > div:nth-of-type(2) span").should('contain', 'Passwords do not match')
+  })
+
 })
