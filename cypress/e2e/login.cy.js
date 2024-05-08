@@ -17,6 +17,6 @@ describe("Login", () => {
     it("Login successful", function () {
         const { username, password } = this.dataAdmin
         cy.loginHRM(username, password)
-        cy.location("href").should("includes", "/dashboard/index")
+        cy.url().should("include", "/dashboard/index") 
     })
 })

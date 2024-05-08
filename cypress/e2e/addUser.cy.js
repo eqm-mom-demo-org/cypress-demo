@@ -1,13 +1,11 @@
 describe("Add User", () => {
-  before(function () {
-    cy.fixture('data-admin.json').as('dataAdmin')
-  })
 
   beforeEach(function () {
-    const { username, password } = this.dataAdmin
-    cy.loginHRM(username, password)
-    cy.location("href").should("includes", "/dashboard/index")
-
+    cy.fixture('data-admin.json').then((data) => {
+      const { username, password } = data
+      cy.loginHRM(username, password);
+      cy.url().should("include", "/dashboard/index") 
+    })
   })
 
   it('User addition successful', () => {
