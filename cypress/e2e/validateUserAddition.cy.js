@@ -22,7 +22,7 @@ describe("Validate user addition", () => {
       cy.fixture('data-admin.json').then((data) => {
         const { username, password } = data
         cy.loginHRM(username, password); 
-        cy.url().should("include", "/dashboard") 
+        cy.url().should("include", "/dashboard/index") 
 
         // Lưu lại trạng thái đăng nhập vào Local Storage
         localStorage.setItem('loggedIn', 'true')
