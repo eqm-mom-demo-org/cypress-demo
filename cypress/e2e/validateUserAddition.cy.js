@@ -52,7 +52,7 @@ describe("Validate user addition", () => {
   })
 
 
-  it('Verify the validation for Username', () => {
+  it('Test case 3: Verify the validation for Username', () => {
     cy.visit("/admin/saveSystemUser")
     cy.get("div:nth-of-type(4) input").type("demo")
     cy.get("div:nth-of-type(4) span").should('contain', 'Should be at least 5 characters') // < 5 chars
@@ -62,7 +62,7 @@ describe("Validate user addition", () => {
   })
 
 
-  it('Verify the validation for Password', () => {
+  it('Test case 4: Verify the validation for Password', () => {
     cy.visit("/admin/saveSystemUser")
     cy.get("div.user-password-cell input").type("admin")     // < 7 chars
     cy.get("div.user-password-cell span").should('contain', 'Should have at least 7 characters')
@@ -87,7 +87,7 @@ describe("Validate user addition", () => {
   })
 
 
-  it('Verify the validation for Confirm Password', () => {
+  it('Test case 5: Verify the validation for Confirm Password', () => {
     cy.visit("/admin/saveSystemUser")
     cy.get("div.user-password-row > div > div:nth-of-type(2) input").type("Admin@1")
     cy.get("div.user-password-row > div > div:nth-of-type(2) span").should('contain', 'Passwords do not match')
