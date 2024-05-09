@@ -1,14 +1,3 @@
-
-// describe('Login', () => {
-
-//     it('Login', () => {
-
-//         cy.loginHRM(username, password)
-//         cy.location("href").should("includes", "/dashboard/index")
-//     })
-
-// })
-
 describe("Login", () => {
     before(function () {
         cy.fixture('data-admin.json').as('dataAdmin')

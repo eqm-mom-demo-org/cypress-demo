@@ -48,6 +48,7 @@ Cypress.Commands.add('loginHRM', (username, password) => {
   
 })
 
+
 // Cypress.Commands.overwrite('reload', (originalFn, options) => {
 //         // Kiểm tra xem đã có thông tin đăng nhập trong localStorage chưa
 //         const token = window.localStorage.getItem('token')
