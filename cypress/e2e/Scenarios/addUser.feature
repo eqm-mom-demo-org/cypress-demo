@@ -1,9 +1,9 @@
-Feature: Adding a New User Successfully
+Feature: Add User
     As an admin
     I want to add a new user
     So that I can manage the user
 
-    Scenario:
+    Scenario: Adding a New User Successfully
         Given Log in with valid credentials
         And Navigate to the user addition page
         And Set the user role as "Admin"
