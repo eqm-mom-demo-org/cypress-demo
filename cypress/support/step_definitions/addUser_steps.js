@@ -7,9 +7,9 @@ When(`Navigate to the user addition page`, () => {
     cy.visit("/admin/saveSystemUser")
 });
 
-When(`Set the user role as {string}`, (userRole) => {
+When(`Set the user role as {string}`, (role) => {
     cy.get("form > div:nth-of-type(1) > div > div:nth-of-type(1) i").click()
-    cy.get('[role="listbox"]').contains(userRole).click()
+    cy.get('[role="listbox"]').contains(role).click()
 });
 
 When(`Set the status to {string}`, (status) => {
@@ -19,7 +19,7 @@ When(`Set the status to {string}`, (status) => {
 
 When(`Enter an employee name {string} and select any name from the search results`, (name) => {
     cy.get("input[placeholder='Type for hints...']").type(name)
-    cy.get('[role="listbox"]').should('contain', name).should('have.value', "").click()
+    cy.get('[role="listbox"]').contains(name, { matchCase: false }).should('have.value', "").click()
 });
 
 
@@ -34,7 +34,6 @@ When(`Generate a random username`, () => {
         return text
     }
     const username = user_name()
-
 
     cy.get("div:nth-of-type(4) input").type(username)
 });

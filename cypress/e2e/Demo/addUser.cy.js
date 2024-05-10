@@ -17,9 +17,10 @@ describe("Add User", () => {
       cy.get("input[placeholder='Type for hints...']").type("john") //Employee name
   
       //cy.get('[role="listbox"]').should('contain', 'john').contains("John Knox").click() // select name
-      cy.get('[role="listbox"]').should('contain', 'john').should('have.value', "").click() // select any name
-  
-  
+      //cy.get('div.oxd-autocomplete-dropdown.--positon-bottom').should('contain', 'John').should('have.value', "").click() // select any name
+      cy.get('[role="listbox"]').contains('john', { matchCase: false }).should('have.value', "").click()
+      
+      
       //random user name
       function user_name() {
         var text = ""
