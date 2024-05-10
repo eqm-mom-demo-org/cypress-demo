@@ -1,7 +1,6 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
-import { loginPage } from './login_steps';
 
-// loginPage();
+// Given login
 
 When(`Navigate to the user addition page`, () => {
     cy.visit("/admin/saveSystemUser")
