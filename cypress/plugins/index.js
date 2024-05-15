@@ -1,5 +1,14 @@
-const cucumber = require('cypress-cucumber-preprocessor').default;
+const { addCucumberPreprocessorPlugin } = require("@badeball/cypress-cucumber-preprocessor");
+const { preprocessor } = require("@badeball/cypress-cucumber-preprocessor/browserify");
 
-module.exports = (on, config) => {
-  on('file:preprocessor', cucumber());
-};
+async function setupNodeEvents(on, config) {
+    // This is required for the preprocessor to be able to generate JSON reports after each run, and more,
+    await addCucumberPreprocessorPlugin(on, config);
+
+    on("file:preprocessor", preprocessor(config));
+
+    // Make sure to return the config object as it might have been modified by the plugin.
+    return config;
+}
+
+module.exports = setupNodeEvents;
