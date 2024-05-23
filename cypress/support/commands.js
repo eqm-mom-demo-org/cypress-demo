@@ -49,38 +49,6 @@ Cypress.Commands.add('loginHRM', (username, password) => {
 })
 
 
-// Cypress.Commands.overwrite('reload', (originalFn, options) => {
-//         // Kiểm tra xem đã có thông tin đăng nhập trong localStorage chưa
-//         const token = window.localStorage.getItem('token')
-      
-//         if (token) {
-//           // Nếu có token, sử dụng nó để bypass đăng nhập và reload trang
-//           return cy.request({
-//             method: 'POST',
-//             url: '/admin/saveSystemUser', // Endpoint đăng nhập của bạn
-//             body: {
-//               // Thông tin đăng nhập (có thể được truyền qua options nếu cần)
-//               username: options.username,
-//               password: options.password
-//             },
-//             failOnStatusCode: false // Cho phép xử lý mã lỗi không thành công
-//           }).then((response) => {
-//             // Lưu lại token mới nếu đăng nhập thành công
-//             if (response.status === 200) {
-//               window.localStorage.setItem('token', response.body.token)
-//             } else {
-//               // Xử lý khi đăng nhập không thành công
-//               throw new Error(`Failed to login with status: ${response.status}`)
-//             }
-      
-//             // Sau khi đăng nhập thành công, reload trang
-//             originalFn(options)
-//           });
-//         } else {
-//           // Nếu không có token, chỉ reload trang mà không cần đăng nhập
-//           originalFn(options)
-//         }
-//       });
 
 
 

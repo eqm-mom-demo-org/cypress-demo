@@ -12,71 +12,13 @@
     "hasOther": false,
     "skipped": 0,
     "hasSkipped": false,
-    "start": "2024-05-16T06:27:07.464Z",
-    "end": "2024-05-16T06:28:42.427Z",
-    "duration": 94963
+    "start": "2024-05-23T03:00:18.737Z",
+    "end": "2024-05-23T03:01:47.721Z",
+    "duration": 88984
   },
   "results": [
     {
-      "uuid": "ddf94d4b-ddba-49b0-a92b-9d6e063117ad",
-      "title": "",
-      "fullFile": "cypress\\e2e\\Demo\\addUser.cy.js",
-      "file": "cypress\\e2e\\Demo\\addUser.cy.js",
-      "beforeHooks": [],
-      "afterHooks": [],
-      "tests": [],
-      "suites": [
-        {
-          "uuid": "a1c3fd90-677b-40a6-87c9-8f39cc095cba",
-          "title": "Add User",
-          "fullFile": "",
-          "file": "",
-          "beforeHooks": [],
-          "afterHooks": [],
-          "tests": [
-            {
-              "title": "User addition successful",
-              "fullTitle": "Add User User addition successful",
-              "timedOut": null,
-              "duration": 25229,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": null,
-              "code": "cy.visit(\"/admin/saveSystemUser\");\ncy.get(\"form > div:nth-of-type(1) > div > div:nth-of-type(1) i\").click(); //User role\ncy.get('[role=\"listbox\"]').contains(\"Admin\").click();\ncy.get(\"div:nth-of-type(3) i\").click(); //Status\ncy.get('[role=\"listbox\"]').contains(\"Enabled\").click();\ncy.get(\"input[placeholder='Type for hints...']\").type(\"john\"); //Employee name\n//cy.get('[role=\"listbox\"]').should('contain', 'john').contains(\"John Knox\").click() // select name\n//cy.get('div.oxd-autocomplete-dropdown.--positon-bottom').should('contain', 'John').should('have.value', \"\").click() // select any name\ncy.get('[role=\"listbox\"]').contains('john', {\n  matchCase: false\n}).should('have.value', \"\").click();\n//random user name\nfunction user_name() {\n  var text = \"\";\n  var possible = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\";\n  for (var i = 0; i < 5; i++) text += possible.charAt(Math.floor(Math.random() * possible.length));\n  return text;\n}\nvar username = user_name();\ncy.get(\"div:nth-of-type(4) input\").type(username); //User name\ncy.get(\"div.user-password-cell input\").type(\"Admin@123\"); //Password\ncy.get(\"div.user-password-row > div > div:nth-of-type(2) input\").type(\"Admin@123\"); //Confirm password\ncy.get(\"button[type='submit']\").click();\ncy.get(\"div.oxd-toast-content\").should('contain', 'Success');\ncy.get(\"div.oxd-toast-content\").should('contain', 'Successfully Saved');",
-              "err": {},
-              "uuid": "4dcddbf1-865f-4042-8195-462e7e0986ff",
-              "parentUUID": "a1c3fd90-677b-40a6-87c9-8f39cc095cba",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "4dcddbf1-865f-4042-8195-462e7e0986ff"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 25229,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 2000
-        }
-      ],
-      "passes": [],
-      "failures": [],
-      "pending": [],
-      "skipped": [],
-      "duration": 0,
-      "root": true,
-      "rootEmpty": true,
-      "_timeout": 2000
-    },
-    {
-      "uuid": "f9f99fa2-a1d9-458b-bc93-87db09ba4859",
+      "uuid": "42a255b1-d294-4680-879c-7d759c48b488",
       "title": "",
       "fullFile": "cypress\\e2e\\Demo\\login.cy.js",
       "file": "cypress\\e2e\\Demo\\login.cy.js",
@@ -85,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "82db19bf-3829-4c03-bae6-9021f51d42ef",
+          "uuid": "5a4d765b-940b-4886-9bd2-00914f6f53d4",
           "title": "Login",
           "fullFile": "",
           "file": "",
@@ -96,7 +38,7 @@
               "title": "Login successful",
               "fullTitle": "Login Login successful",
               "timedOut": null,
-              "duration": 12838,
+              "duration": 12264,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -105,20 +47,20 @@
               "context": null,
               "code": "var _this$dataAdmin = this.dataAdmin,\n  username = _this$dataAdmin.username,\n  password = _this$dataAdmin.password;\ncy.loginHRM(username, password);\ncy.url().should(\"include\", \"/dashboard/index\");",
               "err": {},
-              "uuid": "405ed0c8-a626-4d03-8a8b-f35b8f77b6b8",
-              "parentUUID": "82db19bf-3829-4c03-bae6-9021f51d42ef",
+              "uuid": "ec4f4869-8c56-4315-b8ad-305d2f99dd31",
+              "parentUUID": "5a4d765b-940b-4886-9bd2-00914f6f53d4",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "405ed0c8-a626-4d03-8a8b-f35b8f77b6b8"
+            "ec4f4869-8c56-4315-b8ad-305d2f99dd31"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 12838,
+          "duration": 12264,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -134,7 +76,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "1083ae31-81e4-4fca-80a3-91151184fcf2",
+      "uuid": "006102e2-deb6-4e8a-a902-6afd8f6b1c59",
       "title": "",
       "fullFile": "cypress\\e2e\\Demo\\validateUserAddition.cy.js",
       "file": "cypress\\e2e\\Demo\\validateUserAddition.cy.js",
@@ -143,7 +85,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "dd8b6c31-4b8d-4619-908e-07087f11bb36",
+          "uuid": "2156b2c7-9999-4034-bd31-44da470b50f5",
           "title": "Validate user addition",
           "fullFile": "",
           "file": "",
@@ -154,7 +96,7 @@
               "title": "Test case 1: Verify the validation for all fields have been left empty",
               "fullTitle": "Validate user addition Test case 1: Verify the validation for all fields have been left empty",
               "timedOut": null,
-              "duration": 14073,
+              "duration": 14050,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -163,8 +105,8 @@
               "context": null,
               "code": "cy.visit(\"/admin/saveSystemUser\");\ncy.get(\"form > div:nth-of-type(1) > div > div:nth-of-type(1) i\").click();\ncy.get(\"button[type='submit']\").click();\ncy.get(\"form > div:nth-of-type(1) > div > div:nth-of-type(1) span\").should('contain', 'Required');\ncy.get(\"form > div:nth-of-type(1) > div > div:nth-of-type(2) span\").should('contain', 'Required');\ncy.get(\"div:nth-of-type(3) span\").should('contain', 'Required');\ncy.get(\"div:nth-of-type(4) span\").should('contain', 'Required');\ncy.get(\"div.user-password-cell span\").should('contain', 'Required');\ncy.get(\"div.user-password-row > div > div:nth-of-type(2) span\").should('contain', 'Passwords do not match');",
               "err": {},
-              "uuid": "75c98c7a-1374-4085-bed5-b88917d49822",
-              "parentUUID": "dd8b6c31-4b8d-4619-908e-07087f11bb36",
+              "uuid": "9569529f-0515-44de-890f-f4bb11cc38fa",
+              "parentUUID": "2156b2c7-9999-4034-bd31-44da470b50f5",
               "isHook": false,
               "skipped": false
             },
@@ -172,7 +114,7 @@
               "title": "Test case 2: Verify the validation for Employee Name Not Found",
               "fullTitle": "Validate user addition Test case 2: Verify the validation for Employee Name Not Found",
               "timedOut": null,
-              "duration": 10222,
+              "duration": 11921,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -181,8 +123,8 @@
               "context": null,
               "code": "cy.visit(\"/admin/saveSystemUser\");\ncy.get(\"input[placeholder='Type for hints...']\").type(\"adminnn\");\ncy.get('[role=\"listbox\"]').should('contain', 'No Records Found');\ncy.get('body').click();\ncy.get(\"form > div:nth-of-type(1) > div > div:nth-of-type(2) span\").should('contain', 'Invalid');",
               "err": {},
-              "uuid": "0b5fc2b2-f265-4670-81a9-48d68b5a8fe5",
-              "parentUUID": "dd8b6c31-4b8d-4619-908e-07087f11bb36",
+              "uuid": "e8bba897-641d-44c0-ac3b-a5eacc61075c",
+              "parentUUID": "2156b2c7-9999-4034-bd31-44da470b50f5",
               "isHook": false,
               "skipped": false
             },
@@ -190,7 +132,7 @@
               "title": "Test case 3: Verify the validation for Username",
               "fullTitle": "Validate user addition Test case 3: Verify the validation for Username",
               "timedOut": null,
-              "duration": 8442,
+              "duration": 9154,
               "state": "passed",
               "speed": "medium",
               "pass": true,
@@ -199,8 +141,8 @@
               "context": null,
               "code": "cy.visit(\"/admin/saveSystemUser\");\ncy.get(\"div:nth-of-type(4) input\").type(\"demo\");\ncy.get(\"div:nth-of-type(4) span\").should('contain', 'Should be at least 5 characters'); // < 5 chars\ncy.get(\"div:nth-of-type(4) input\").clear();\ncy.get(\"div:nth-of-type(4) input\").type(\"admin\");\ncy.get(\"div:nth-of-type(4) span\").should('contain', 'Already exists'); //user is existed",
               "err": {},
-              "uuid": "442287ee-62d9-4746-815d-702a0aaf0c24",
-              "parentUUID": "dd8b6c31-4b8d-4619-908e-07087f11bb36",
+              "uuid": "6586a2ae-6c93-4c49-a967-375c3d0ae4fa",
+              "parentUUID": "2156b2c7-9999-4034-bd31-44da470b50f5",
               "isHook": false,
               "skipped": false
             },
@@ -208,7 +150,7 @@
               "title": "Test case 4: Verify the validation for Password",
               "fullTitle": "Validate user addition Test case 4: Verify the validation for Password",
               "timedOut": null,
-              "duration": 12899,
+              "duration": 10384,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -217,8 +159,8 @@
               "context": null,
               "code": "cy.visit(\"/admin/saveSystemUser\");\ncy.get(\"div.user-password-cell input\").type(\"admin\"); // < 7 chars\ncy.get(\"div.user-password-cell span\").should('contain', 'Should have at least 7 characters');\ncy.get('.oxd-chip').should('contain', 'Very Weak');\ncy.get(\"div.user-password-cell input\").clear();\ncy.get(\"div.user-password-cell input\").type(\"admindemo\"); // > 7 chars\ncy.get(\"div.user-password-cell span\").should('contain', 'Your password must contain minimum 1 number');\ncy.get('.oxd-chip').should('contain', 'Better');\ncy.get(\"div.user-password-cell input\").clear();\ncy.get(\"div.user-password-cell input\").type(\"Admindemo\"); //lowercase, uppercase\ncy.get('.oxd-chip').should('contain', 'Better');\ncy.get(\"div.user-password-cell input\").clear();\ncy.get(\"div.user-password-cell input\").type(\"Admindemo123\"); //lowercase, uppercase, number\ncy.get('.oxd-chip').should('contain', 'Strong');\ncy.get(\"div.user-password-cell input\").clear();\ncy.get(\"div.user-password-cell input\").type(\"Admin@123\"); //lowercase, uppercase, number, symbol\ncy.get('.oxd-chip').should('contain', 'Better');",
               "err": {},
-              "uuid": "6d2deecb-5ac6-466a-8c4d-a55e6cd59dd4",
-              "parentUUID": "dd8b6c31-4b8d-4619-908e-07087f11bb36",
+              "uuid": "ef6986ca-7101-4890-937b-4a1bd3324e81",
+              "parentUUID": "2156b2c7-9999-4034-bd31-44da470b50f5",
               "isHook": false,
               "skipped": false
             },
@@ -226,7 +168,7 @@
               "title": "Test case 5: Verify the validation for Confirm Password",
               "fullTitle": "Validate user addition Test case 5: Verify the validation for Confirm Password",
               "timedOut": null,
-              "duration": 6698,
+              "duration": 7001,
               "state": "passed",
               "speed": "medium",
               "pass": true,
@@ -235,24 +177,82 @@
               "context": null,
               "code": "cy.visit(\"/admin/saveSystemUser\");\ncy.get(\"div.user-password-row > div > div:nth-of-type(2) input\").type(\"Admin@1\");\ncy.get(\"div.user-password-row > div > div:nth-of-type(2) span\").should('contain', 'Passwords do not match');",
               "err": {},
-              "uuid": "53e3b976-186b-4f7e-ba86-d6656dde3d1b",
-              "parentUUID": "dd8b6c31-4b8d-4619-908e-07087f11bb36",
+              "uuid": "3462c63b-05b4-483a-a86f-2e96db7797fc",
+              "parentUUID": "2156b2c7-9999-4034-bd31-44da470b50f5",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "75c98c7a-1374-4085-bed5-b88917d49822",
-            "0b5fc2b2-f265-4670-81a9-48d68b5a8fe5",
-            "442287ee-62d9-4746-815d-702a0aaf0c24",
-            "6d2deecb-5ac6-466a-8c4d-a55e6cd59dd4",
-            "53e3b976-186b-4f7e-ba86-d6656dde3d1b"
+            "9569529f-0515-44de-890f-f4bb11cc38fa",
+            "e8bba897-641d-44c0-ac3b-a5eacc61075c",
+            "6586a2ae-6c93-4c49-a967-375c3d0ae4fa",
+            "ef6986ca-7101-4890-937b-4a1bd3324e81",
+            "3462c63b-05b4-483a-a86f-2e96db7797fc"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 52334,
+          "duration": 52510,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "58dd1b5c-bb8b-475f-85e4-e7f8730845f1",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Demo\\addUser.cy.js",
+      "file": "cypress\\e2e\\Demo\\addUser.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4ed05ee9-5f02-474a-9d36-3aa8e8db15c3",
+          "title": "Add User",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "User addition successful",
+              "fullTitle": "Add User User addition successful",
+              "timedOut": null,
+              "duration": 20498,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"/admin/saveSystemUser\");\ncy.get(\"form > div:nth-of-type(1) > div > div:nth-of-type(1) i\").click(); //User role\ncy.get('[role=\"listbox\"]').contains(\"Admin\").click();\ncy.get(\"div:nth-of-type(3) i\").click(); //Status\ncy.get('[role=\"listbox\"]').contains(\"Enabled\").click();\ncy.get(\"input[placeholder='Type for hints...']\").type(\"john\"); //Employee name\n//cy.get('[role=\"listbox\"]').should('contain', 'john').contains(\"John Knox\").click() // select name\n//cy.get('div.oxd-autocomplete-dropdown.--positon-bottom').should('contain', 'John').should('have.value', \"\").click() // select any name\ncy.get('[role=\"listbox\"]').contains('john', {\n  matchCase: false\n}).should('have.value', \"\").click();\n//random user name\nfunction user_name() {\n  var text = \"\";\n  var possible = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\";\n  for (var i = 0; i < 5; i++) text += possible.charAt(Math.floor(Math.random() * possible.length));\n  return text;\n}\nvar username = user_name();\ncy.get(\"div:nth-of-type(4) input\").type(username); //User name\ncy.get(\"div.user-password-cell input\").type(\"Admin@123\"); //Password\ncy.get(\"div.user-password-row > div > div:nth-of-type(2) input\").type(\"Admin@123\"); //Confirm password\ncy.get(\"button[type='submit']\").click();\ncy.get(\"div.oxd-toast-content\").should('contain', 'Success');\ncy.get(\"div.oxd-toast-content\").should('contain', 'Successfully Saved');",
+              "err": {},
+              "uuid": "94cb261b-7d50-431a-b148-68e7e9506319",
+              "parentUUID": "4ed05ee9-5f02-474a-9d36-3aa8e8db15c3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "94cb261b-7d50-431a-b148-68e7e9506319"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 20498,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

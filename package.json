@@ -1,7 +1,6 @@
 {
   "name": "orangehrm",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "cy:run": "cypress run",
@@ -25,5 +24,7 @@
     "@cypress/browserify-preprocessor": "^3.0.2",
     "json2html": "^0.0.8",
     "marge": "^1.0.1"
-  }
+  },
+  "keywords": [],
+  "description": ""
 }
